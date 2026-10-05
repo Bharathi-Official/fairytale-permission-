@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>✨ Our Fairytale ✨</title>
+
 <style>
 *{box-sizing:border-box}
+
 body{
 margin:0;
 font-family:Georgia,serif;
@@ -18,22 +20,28 @@ background:
 radial-gradient(circle at top,#4b1b6b,#170021 65%,#090012);
 color:#fff;
 }
+
 body:before{
 content:"";
-position:fixed;inset:0;
+position:fixed;
+inset:0;
 background:
 radial-gradient(circle,rgba(255,255,255,.15) 1px,transparent 2px);
 background-size:60px 60px;
 opacity:.35;
 animation:twinkle 8s linear infinite;
 }
+
 @keyframes twinkle{
 0%{transform:translateY(0)}
 100%{transform:translateY(-60px)}
 }
+
 .card{
 position:relative;
 width:min(92vw,430px);
+max-height:92vh;
+overflow-y:auto;
 background:rgba(255,255,255,.10);
 backdrop-filter:blur(18px);
 border:1px solid rgba(255,255,255,.18);
@@ -42,49 +50,290 @@ padding:22px;
 box-shadow:0 0 45px rgba(255,105,180,.35);
 z-index:2;
 animation:fade 1s;
+scrollbar-width:none;
 }
-@keyframes fade{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
-h1,h2{margin:.3rem 0;text-align:center}
-.slideshow{height:240px;border-radius:20px;overflow:hidden;box-shadow:0 0 20px rgba(255,255,255,.15)}
-.slideshow img{width:100%;height:100%;object-fit:cover;transition:.6s}
-#msg{min-height:135px;text-align:center;line-height:1.55;font-size:15px;padding:10px}
-.controls{display:flex;justify-content:space-between;align-items:center;margin:10px 0}
+
+.card::-webkit-scrollbar{
+display:none;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:scale(.95)
+}
+to{
+opacity:1;
+transform:scale(1)
+}
+}
+
+h1,h2{
+margin:.3rem 0;
+text-align:center
+}
+
+.slideshow{
+height:240px;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 0 20px rgba(255,255,255,.15)
+}
+
+.slideshow img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.6s
+}
+
+#msg{
+min-height:135px;
+text-align:center;
+line-height:1.55;
+font-size:15px;
+padding:10px
+}
+
+.controls{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:10px 0
+}
+
 .controls button,.choice button{
-border:none;border-radius:999px;padding:10px 18px;cursor:pointer;font-weight:bold}
-.controls button{background:#ffffff22;color:#fff}
-.choice{display:flex;justify-content:center;gap:16px}
-.yes{background:#ff4da6;color:#fff}
-.no{background:#7a7a7a;color:#fff}
-#page{font-size:14px}
+border:none;
+border-radius:999px;
+padding:10px 18px;
+cursor:pointer;
+font-weight:bold
+}
+
+.controls button{
+background:#ffffff22;
+color:#fff
+}
+
+.choice{
+display:flex;
+justify-content:center;
+gap:16px
+}
+
+.yes{
+background:#ff4da6;
+color:#fff
+}
+
+.no{
+background:#7a7a7a;
+color:#fff
+}
+
+#page{
+font-size:14px
+}
+
 .heart{
 position:absolute;
 font-size:24px;
-animation:float 4s linear forwards}
+animation:float 4s linear forwards
+}
+
 @keyframes float{
-from{transform:translateY(0) scale(.8);opacity:1}
-to{transform:translateY(-420px) scale(1.4);opacity:0}
+from{
+transform:translateY(0) scale(.8);
+opacity:1
+}
+to{
+transform:translateY(-420px) scale(1.4);
+opacity:0
+}
+}
+
+
+/* ---------- FLOW PAGES ---------- */
+
+.flowPage{
+animation:pageFade .6s ease;
+}
+
+@keyframes pageFade{
+from{
+opacity:0;
+transform:translateX(25px);
+}
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+
+/* Next button */
+
+.nextBtn,
+.agreementBtn{
+display:block;
+width:100%;
+border:none;
+border-radius:999px;
+padding:13px 20px;
+margin-top:20px;
+background:linear-gradient(135deg,#ff4da6,#c83cff);
+color:#fff;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 0 20px rgba(255,77,166,.4);
+}
+
+.nextBtn:active,
+.agreementBtn:active{
+transform:scale(.97);
+}
+
+
+/* Universe Orders */
+
+.order{
+margin:18px 0;
+line-height:1.65;
+font-size:15px;
+}
+
+.orderTitle{
+font-weight:bold;
+font-size:16px;
+margin-bottom:5px;
+}
+
+
+/* Divider */
+
+.divider{
+border:0;
+border-top:1px solid rgba(255,255,255,.2);
+margin:22px 0;
+}
+
+
+/* Personal message */
+
+.personalMsg{
+line-height:1.75;
+font-size:15px;
+text-align:left;
+}
+
+.personalMsg p{
+margin:0 0 18px;
+}
+
+
+/* Agreement box */
+
+.agreementBox{
+margin-top:22px;
+padding:18px;
+border-radius:20px;
+background:rgba(255,255,255,.07);
+border:1px solid rgba(255,255,255,.16);
+text-align:center;
+}
+
+.agreementBox h2{
+font-size:20px;
+margin-bottom:12px;
+}
+
+.agreementText{
+font-size:14px;
+line-height:1.65;
+}
+
+
+/* Final page */
+
+.finalPage{
+text-align:center;
+animation:pageFade .7s ease;
+}
+
+.finalPage h1{
+font-size:25px;
+}
+
+.finalImage{
+width:100%;
+height:270px;
+object-fit:cover;
+border-radius:20px;
+margin:15px 0;
+box-shadow:
+0 0 25px rgba(255,255,255,.18),
+0 0 35px rgba(255,105,180,.25);
+}
+
+.finalText{
+font-size:15px;
+line-height:1.75;
+text-align:left;
+}
+
+.finalQuote{
+margin-top:18px;
+padding:15px;
+border-radius:18px;
+background:rgba(255,255,255,.08);
+text-align:center;
+font-size:16px;
+line-height:1.6;
 }
 </style>
 </head>
+
 <body>
+
 <div class="card" id="card">
+
+<!-- ORIGINAL SLIDESHOW -->
+
+<div id="mainStory">
+
 <h1>✨ A Little Fairytale ✨</h1>
+
 <div class="slideshow" id="touchArea">
 <img id="slide" src="img1.jpg">
 </div>
+
 <div class="controls">
 <button onclick="prevSlide()">◀</button>
 <div id="page"></div>
 <button onclick="nextSlide()">▶</button>
 </div>
+
 <div id="msg"></div>
+
 <h2>Will you accept our love? ❤️</h2>
+
 <div class="choice" id="btns">
 <button class="yes" id="yesBtn" onclick="acceptLove()">Yes 💖</button>
 <button class="no" id="noBtn" onclick="swapButtons()">No 😅</button>
 </div>
+
 </div>
+
+</div>
+
+
 <script>
+
+/* =========================================
+   ORIGINAL SLIDESHOW
+========================================= */
+
 const slides=[
 ["img1.jpg","🌸 Hi Athai, I know your daughter's character. She has a kind and beautiful heart."],
 ["img2.jpg","🤍 I know how to understand and handle her with patience and respect."],
@@ -94,55 +343,335 @@ const slides=[
 ["img3.jpg","🙏 You have raised a wonderful and mature daughter. Thank you for that."],
 ["img1.jpg","✨ Maybe our story was written by the Universe. Please say YES and let this fairytale continue."]
 ];
+
 let i=0;
+
 function render(){
 slide.src=slides[i][0];
 msg.innerHTML=slides[i][1];
 page.textContent=(i+1)+" / "+slides.length;
 }
-function nextSlide(){i=(i+1)%slides.length;render();}
-function prevSlide(){i=(i-1+slides.length)%slides.length;render();}
+
+function nextSlide(){
+i=(i+1)%slides.length;
 render();
-setInterval(nextSlide,4500);
+}
+
+function prevSlide(){
+i=(i-1+slides.length)%slides.length;
+render();
+}
+
+render();
+
+/* 10 seconds */
+setInterval(nextSlide,10000);
+
+
+/* Swipe */
 
 let sx=0;
-touchArea.addEventListener("touchstart",e=>sx=e.touches[0].clientX);
+
+touchArea.addEventListener("touchstart",e=>{
+sx=e.touches[0].clientX;
+});
+
 touchArea.addEventListener("touchend",e=>{
 let dx=e.changedTouches[0].clientX-sx;
+
 if(dx>40)prevSlide();
 if(dx<-40)nextSlide();
 });
 
+
+/* =========================================
+   NO BUTTON
+========================================= */
+
 let swapped=false;
+
 function swapButtons(){
-alert("🥹 Please don't say No. Maybe this is the Universe's plan. A pair like us is rare. Think once more and press YES to read the Universe's message. ✨❤️");
+
+alert(
+"🥹 Please don't say No. Maybe this is the Universe's plan. A pair like us is rare. Think once more and press YES to read the Universe's message. ✨❤️"
+);
+
 const c=document.getElementById("btns");
-if(!swapped){c.insertBefore(noBtn,yesBtn);swapped=true;}
-else{c.insertBefore(yesBtn,noBtn);swapped=false;}
+
+if(!swapped){
+c.insertBefore(noBtn,yesBtn);
+swapped=true;
 }
+else{
+c.insertBefore(yesBtn,noBtn);
+swapped=false;
+}
+
+}
+
+
+/* =========================================
+   YES → UNIVERSE PAGE
+========================================= */
+
 function acceptLove(){
-card.innerHTML=`<h1>✨ Message from the Universe ✨</h1>
-<h2>🌙 Universe Order For Us ❤️</h2>
-<div style="line-height:1.7;text-align:left;padding:8px 12px">
-❤️ Always choose each other.<br>
-🤝 Share responsibilities.<br>
-🌸 Speak with kindness.<br>
-😊 Protect each other's smile.<br>
-🏡 Respect both families.<br>
-💖 Never let ego become bigger than love.<br>
-✨ Keep trusting, growing and dreaming together.<br><br>
-<b>The Universe says:</b><br>
-"Write the rest of this fairytale hand in hand... happily ever after." 💫
-</div>`;
+
+card.innerHTML=`
+
+<div class="flowPage">
+
+<h1>✨ Message from the Universe ✨</h1>
+
+<h2>🌙 Four Important Orders</h2>
+
+<br>
+
+<div class="order">
+
+<div class="orderTitle">
+💖 First Order:
+</div>
+
+Remember this above everything else:
+
+<b>Your daughter's happiness is more valuable than money, wealth, status, or anything material in this world.</b>
+
+</div>
+
+
+<div class="order">
+
+<div class="orderTitle">
+💝 Second Order:
+</div>
+
+Do not measure her future only by how much someone earns.
+
+Measure it by how deeply she is
+<b>loved, respected, understood and cared for.</b>
+
+</div>
+
+
+<div class="order">
+
+<div class="orderTitle">
+🌸 Third Order:
+</div>
+
+Give importance to the person who will stand beside her when life becomes difficult, support her dreams, protect her peace and keep her smiling.
+
+</div>
+
+
+<div class="order">
+
+<div class="orderTitle">
+✨ Fourth Order:
+</div>
+
+If her heart is happy, her life is happy.
+
+So choose the person who can give her a lifetime of
+<b>love, respect, peace and happiness.</b>
+
+</div>
+
+
+<button class="nextBtn" onclick="showPersonalMessage()">
+Next ✨
+</button>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================
+   PAGE 2 → YOUR MESSAGE
+========================================= */
+
+function showPersonalMessage(){
+
+card.innerHTML=`
+
+<div class="flowPage">
+
+<h1>❤️ Now, Let Me Tell You Personally...</h1>
+
+<div class="divider"></div>
+
+<div class="personalMsg">
+
+<p>
+I don't want to promise you a life filled only with money or material things.
+</p>
+
+<p>
+I want to promise you something more important —
+<b>that I will always care about her happiness.</b>
+</p>
+
+<p>
+I will respect her, understand her, support her dreams and stand beside her through every difficult chapter of life.
+</p>
+
+<p>
+I will never expect her to carry every responsibility alone.
+We'll share the responsibilities, the struggles, the happiness and everything life brings.
+</p>
+
+<p>
+🏡 I will respect your family just as I want mine to be respected.
+</p>
+
+<p>
+😊 And whenever she smiles, I will consider that one of my biggest achievements.
+</p>
+
+<p>
+🙏 I don't ask for anything more than your trust and blessings.
+</p>
+
+</div>
+
+
+<div class="agreementBox">
+
+<h2>📜 Universe Agreement</h2>
+
+<div class="agreementText">
+
+I promise to choose her happiness over ego,
+to choose understanding over arguments,
+to choose love over pride,
+and to stand beside her through every chapter of life.
+
+<br><br>
+
+I promise to respect both families,
+share responsibilities,
+support her dreams,
+and protect the beautiful smile that made me fall in love with her.
+
+<br><br>
+
+<b>
+❤️ This is not just a promise to her.
+It is a promise to the family who trusted me with her heart.
+</b>
+
+</div>
+
+
+<button class="agreementBtn" onclick="signAgreement()">
+✍️ Sign the Universe Agreement ❤️
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================
+   PAGE 3 → FINAL IMAGE
+========================================= */
+
+function signAgreement(){
+
+card.innerHTML=`
+
+<div class="finalPage">
+
+<h1>💍 Agreement Signed ❤️</h1>
+
+<h2>✨ Our Fairytale Continues ✨</h2>
+
+<img
+class="finalImage"
+src="final.jpg"
+alt="Our Life After Marriage"
+>
+
+<div class="finalText">
+
+<p>
+🌸 And now imagine the life waiting for us...
+</p>
+
+<p>
+A little home filled with laughter, silly fights, late-night conversations, shared responsibilities and countless beautiful memories.
+</p>
+
+<p>
+❤️ Two hearts becoming one family, and two families becoming one beautiful circle of love.
+</p>
+
+<p>
+🏡 We don't need a perfect life.
+
+We just need to keep choosing each other every single day.
+</p>
+
+</div>
+
+
+<div class="finalQuote">
+
+✨ <b>
+“Her happiness will always matter more than anything money can buy.
+And her hand will always have a place in mine.”
+</b> ❤️
+
+<br><br>
+
+🌙 <i>
+And this is where our real fairytale begins...
+</i>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/* =========================================
+   HEARTS
+========================================= */
+
+function createHearts(){
+
 for(let k=0;k<45;k++){
+
 let h=document.createElement("div");
+
 h.className="heart";
 h.textContent="💖";
+
 h.style.left=Math.random()*100+"vw";
 h.style.bottom="0";
+
 document.body.appendChild(h);
+
 }
+
 }
+
+
+/* Keep hearts after agreement */
+
+const originalSignAgreement=signAgreement;
+
 </script>
+
 </body>
 </html>
